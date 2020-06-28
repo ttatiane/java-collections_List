@@ -46,18 +46,20 @@ public class Program {
 		System.out.print("Enter the employee 'id' that will have salary increase: ");
 		int idSalary = sc.nextInt();
 		
-		Integer index = idSearch(employees, idSalary); 
+//		Integer index = idSearch(employees, idSalary); 
 		
+		Employee emp = employees.stream().filter(x -> x.getId() == idSalary).findFirst().orElse(null);
 		
-		
-		if (index == null) {
+//		if (index == null) {
+		if (emp == null) {
 			
 			System.out.println("This id does not exist!");
 		} else {
 			System.out.print("Enter the percentage: ");
 			double percentage = sc.nextDouble();
 			
-			employees.get(index).increaseSalary(percentage);
+//			employees.get(index).increaseSalary(percentage);
+			emp.increaseSalary(percentage);
 		}
 		
 		System.out.println();
@@ -71,14 +73,14 @@ public class Program {
 	}// main(-)
 	
 	
-	public static Integer idSearch(List<Employee> list, int id) {
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getId() == id) {
-				return i;
-			}
-		}
-		return null;
-	}
+//	public static Integer idSearch(List<Employee> list, int id) {
+//		for (int i = 0; i < list.size(); i++) {
+//			if (list.get(i).getId() == id) {
+//				return i;
+//			}
+//		}
+//		return null;
+//	}
 	
 	public static boolean hasId(List<Employee> list, int id) {
 		for (int i = 0; i < list.size(); i++) {
