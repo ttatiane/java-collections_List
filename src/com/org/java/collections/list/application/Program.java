@@ -26,6 +26,12 @@ public class Program {
 			System.out.println("Employee #" + (i + 1) + ":");
 			System.out.print("Id: ");
 			int id = sc.nextInt();
+			
+			while (hasId(employees, id)) {
+				System.out.println("Id already taken! Try again:");
+				id = sc.nextInt();
+			}
+			
 			System.out.print("Name: ");
 			sc.nextLine();
 			String name = sc.nextLine();
@@ -41,6 +47,8 @@ public class Program {
 		int idSalary = sc.nextInt();
 		
 		Integer index = idSearch(employees, idSalary); 
+		
+		
 		
 		if (index == null) {
 			
@@ -71,5 +79,15 @@ public class Program {
 		}
 		return null;
 	}
+	
+	public static boolean hasId(List<Employee> list, int id) {
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getId() == id) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 }// class(-)
